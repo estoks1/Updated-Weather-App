@@ -1,13 +1,18 @@
 body {
   background-color: black;
   color: white;
+  font-family: Roboto;
+}
+
+p {
+  font-size: 50px;
 }
 
 #container {
   max-width: 600px;
   display: block;
   margin: 0 auto;
-  padding: 10px;
+  padding: 15px;
   background-color: black;
   border-radius: 20px;
   box-shadow: 0 10px 40px yellow;
@@ -55,7 +60,7 @@ input[type="text"]::placeholder {
 
 #s-cover {
   width: 1px;
-  padding-left: 15px;
+  padding-left: 12px;
 }
 
 button {
@@ -77,7 +82,7 @@ button {
   height: 43px;
   margin-top: 0;
   border-width: 15px;
-  border: 15px solid yellow;
+  border: 15px solid white;
   background-color: transparent;
   border-radius: 50%;
   transition: 0.5s ease all;
@@ -104,7 +109,7 @@ button span:after {
   right: 0;
   width: 45px;
   height: 15px;
-  background-color: yellow;
+  background-color: white;
   border-radius: 10px;
   transform: rotateZ(0);
   transition: 0.5s ease all;
@@ -115,7 +120,7 @@ button span:after {
   width: 67px;
   height: 15px;
   border-width: 0;
-  background-color: yellow;
+  background-color: white;
   border-radius: 20px;
 }
 
@@ -123,7 +128,7 @@ button span:after {
   top: 50%;
   left: 56px;
   width: 25px;
-  margin-top: -9px;
+  margin-top: -15px;
   transform: rotateZ(0);
 }
 
@@ -140,7 +145,7 @@ button span:after {
 #s-cover:hover button span:after {
   right: -6px;
   width: 40px;
-  background-color: yellow;
+  background-color: white;
 }
 input,
 button {
