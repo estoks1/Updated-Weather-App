@@ -33,13 +33,12 @@ function getPosition(position) {
   let lon = position.coords.longitude;
   let apiKeyGeo = `7de13162f1f290fa9b7e98c86d849836`;
   let apiUrlGeo = `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=${apiKeyGeo}&units=metric`;
-  axios.get(apiUrlGeo).then(showTemp);
+  axios.get(apiUrlGeo).then(showTempGeo);
 }
 
 function displayTemperature(response) {
   console.log(response);
   let temperature = Math.round(response.data.main.temp);
-  console.log(temperature);
   let h1 = document.querySelector("h1");
   h1.innerHTML = temperature;
 }
@@ -49,10 +48,13 @@ form.addEventListener("submit", search);
 
 navigator.geolocation.getCurrentPosition(getPosition);
 
-function showTemp(response) {
+function showTempGeo(response) {
   console.log(response);
   let temperature = Math.round(response.data.main.temp);
   console.log(temperature);
   let h1 = document.querySelector("h1");
   h1.innerHTML = `${temperature}`;
+  let geoName = response.data.name;
+  let h2 = document.querySelector("h2");
+  h2.innerHTML = geoName;
 }
