@@ -31,8 +31,7 @@ function displayForecast() {
             id="icon"
           />
           <div class="weather-forecast-temperatures">
-            <span class="weather-forecast-max">Max°C</span> |
-            <span class="weather-forecast-min"> Min°C</span>
+            <span class="weather-forecast-max">Max°C</span> |<span class="weather-forecast-min"> Min°C</span>
           </div>
         </div>
   `;
@@ -40,6 +39,13 @@ function displayForecast() {
 
   forecastHTML = forecastHTML + `</div>`;
   forecastElement.innerHTML = forecastHTML;
+}
+
+function getForecast(coordinates) {
+  console.log(coordinates);
+  let apiKey = "cabdbda40038ba7d1165b953b1c7bd6c";
+  let apiUrl = `https://api.openweathermap.org/data/2.5/onecall?lat=${coordinates.lat}&lon=${coordinates.lon}&appid=${apiKey}&units=metric`;
+  axios.get(apiUrl).then(displayForecast);
 }
 
 function search(event) {
@@ -79,6 +85,7 @@ function displayTemperature(response) {
     "src",
     `https://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`
   );
+  getForecast(response.data.coord);
 }
 
 navigator.geolocation.getCurrentPosition(getPosition);
