@@ -51,9 +51,9 @@ function displayForecast(response) {
           <div class="weather-forecast-temperatures">
             <span class="weather-forecast-max">${Math.round(
               forecastDay.temp.max
-            )}°C</span> |<span class="weather-forecast-min"> ${Math.round(
+            )}°F</span> |<span class="weather-forecast-min"> ${Math.round(
           forecastDay.temp.min
-        )}°C</span>
+        )}°F</span>
           </div>
         </div>
   `;
@@ -67,7 +67,7 @@ function displayForecast(response) {
 function getForecast(coordinates) {
   console.log(coordinates);
   let apiKey = "cabdbda40038ba7d1165b953b1c7bd6c";
-  let apiUrl = `https://api.openweathermap.org/data/2.5/onecall?lat=${coordinates.lat}&lon=${coordinates.lon}&appid=${apiKey}&units=metric`;
+  let apiUrl = `https://api.openweathermap.org/data/2.5/onecall?lat=${coordinates.lat}&lon=${coordinates.lon}&appid=${apiKey}&units=imperial`;
   axios.get(apiUrl).then(displayForecast);
 }
 
@@ -77,7 +77,7 @@ function search(event) {
   let h2 = document.querySelector("h2");
   h2.innerHTML = input.value;
   let city = input.value;
-  let units = "metric";
+  let units = "imperial";
   let apiKey = "667d9f573c8af4c33457be5d561a9148";
   let apiURL = `https://api.openweathermap.org/data/2.5/weather?q=${city}&units=${units}&appid=${apiKey}`;
   axios.get(apiURL).then(displayTemperature);
@@ -87,7 +87,7 @@ function getPosition(position) {
   let lat = position.coords.latitude;
   let lon = position.coords.longitude;
   let apiKeyGeo = `7de13162f1f290fa9b7e98c86d849836`;
-  let apiUrlGeo = `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=${apiKeyGeo}&units=metric`;
+  let apiUrlGeo = `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=${apiKeyGeo}&units=imperial`;
   axios.get(apiUrlGeo).then(showTempGeo);
 }
 
@@ -133,30 +133,7 @@ function showTempGeo(response) {
   getForecast(response.data.coord);
 }
 
-function showFahrenheitTemperature(event) {
-  event.preventDefault();
-  let fahrenheitTemperature = Math.round((celsiusTemperature * 9) / 5 + 32);
-  let temperatureElement = document.querySelector("#temperature");
-  temperatureElement.innerHTML = fahrenheitTemperature;
-  celsiusLink.classList.remove("active");
-  fahrenheitLink.classList.add("active");
-}
-
-function showCelsiusTemperature(event) {
-  event.preventDefault();
-  let temperatureElement = document.querySelector("#temperature");
-  temperatureElement.innerHTML = Math.round(celsiusTemperature);
-  celsiusLink.classList.add("active");
-  fahrenheitLink.classList.remove("active");
-}
-
 let celsiusTemperature = null;
 
 let form = document.querySelector("form");
 form.addEventListener("submit", search);
-
-let fahrenheitLink = document.querySelector("#fahrenheit-link");
-fahrenheitLink.addEventListener("click", showFahrenheitTemperature);
-
-let celsiusLink = document.querySelector("#celsius-link");
-celsiusLink.addEventListener("click", showCelsiusTemperature);
