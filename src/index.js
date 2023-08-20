@@ -51,7 +51,6 @@ function getForecast(coordinates) {
 function search(event) {
   event.preventDefault();
   let input = document.querySelector("#search-text-input");
-  console.log(input.value);
   let h2 = document.querySelector("h2");
   h2.innerHTML = input.value;
   let city = input.value;
@@ -70,7 +69,6 @@ function getPosition(position) {
 }
 
 function displayTemperature(response) {
-  console.log(response);
   let temperature = Math.round(response.data.main.temp);
   let temperatureElement = document.querySelector("#temperature");
   temperatureElement.innerHTML = temperature;
@@ -93,7 +91,6 @@ navigator.geolocation.getCurrentPosition(getPosition);
 function showTempGeo(response) {
   celsiusTemperature = response.data.main.temp;
   let temperature = Math.round(celsiusTemperature);
-  console.log(temperature);
   let temperatureElement = document.querySelector("#temperature");
   temperatureElement.innerHTML = `${temperature}`;
   let geoName = response.data.name;
@@ -110,6 +107,7 @@ function showTempGeo(response) {
     "src",
     `https://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`
   );
+  getForecast(response.data.coord);
 }
 
 function showFahrenheitTemperature(event) {
