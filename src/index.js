@@ -28,6 +28,14 @@ function search(event) {
   axios.get(apiURL).then(displayTemperature);
 }
 
+function getPosition(position) {
+  let lat = position.coords.latitude;
+  let lon = position.coords.longitude;
+  let apiKeyGeo = `7de13162f1f290fa9b7e98c86d849836`;
+  let apiUrlGeo = `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=${apiKeyGeo}&units=metric`;
+  axios.get(apiUrlGeo).then(showTemp);
+}
+
 function displayTemperature(response) {
   console.log(response);
   let temperature = Math.round(response.data.main.temp);
@@ -38,3 +46,13 @@ function displayTemperature(response) {
 
 let form = document.querySelector("form");
 form.addEventListener("submit", search);
+
+navigator.geolocation.getCurrentPosition(getPosition);
+
+function showTemp(response) {
+  console.log(response);
+  let temperature = Math.round(response.data.main.temp);
+  console.log(temperature);
+  let h1 = document.querySelector("h1");
+  h1.innerHTML = `${temperature}`;
+}
