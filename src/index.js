@@ -15,6 +15,33 @@ let time = `${hour}:${minutes}`;
 let p2 = document.querySelector("p2");
 p2.innerHTML = `${currentDay} ${time}`;
 
+function displayForecast() {
+  let forecastElement = document.querySelector("#weather-forecast");
+  let days = ["Thu", "Fri", "Sat", "Sun", "Mon"];
+  let forecastHTML = `<div class="row">`;
+  days.forEach(function (day) {
+    forecastHTML =
+      forecastHTML +
+      `
+      <div class="col">
+          <div class="weather-forecast-date">Date</div>
+          <img
+            src="https://openweathermap.org/img/wn/10d@2x.png"
+            alt="Clear"
+            id="icon"
+          />
+          <div class="weather-forecast-temperatures">
+            <span class="weather-forecast-max">Max°C</span> |
+            <span class="weather-forecast-min"> Min°C</span>
+          </div>
+        </div>
+  `;
+  });
+
+  forecastHTML = forecastHTML + `</div>`;
+  forecastElement.innerHTML = forecastHTML;
+}
+
 function search(event) {
   event.preventDefault();
   let input = document.querySelector("#search-text-input");
@@ -94,6 +121,8 @@ function showCelsiusTemperature(event) {
   celsiusLink.classList.add("active");
   fahrenheitLink.classList.remove("active");
 }
+
+displayForecast();
 
 let celsiusTemperature = null;
 
