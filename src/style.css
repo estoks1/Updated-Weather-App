@@ -9,7 +9,7 @@ p {
 }
 
 #container {
-  max-width: 600px;
+  max-width: 700px;
   display: block;
   margin: 0 auto;
   padding: 15px;
@@ -166,6 +166,43 @@ p3 {
   text-transform: capitalize;
 }
 
+#currentWeather {
+  text-align: center;
+}
+
+#futureWeather {
+  text-align: center;
+}
+
 a {
   color: white;
+  text-decoration: none;
+}
+
+.weather-temperature img {
+  margin-right: 5px;
+  height: 100px;
+  width: 100px;
+}
+
+.weather-temperature strong {
+  color: white;
+  font-size: 64px;
+  line-height: 1;
+  font-weight: 400;
+}
+
+.weather-temperature .units {
+  position: relative;
+  font-size: 20px;
+  top: -34px;
+}
+
+.weather-temperature .active {
+  color: white;
+  cursor: default;
+}
+
+.weather-temperature .active:hover {
+  text-decoration: none;
 }

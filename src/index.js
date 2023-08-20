@@ -39,7 +39,7 @@ function getPosition(position) {
 function displayTemperature(response) {
   console.log(response);
   let temperature = Math.round(response.data.main.temp);
-  let h1 = document.querySelector("h1");
+  let h1 = document.querySelector("#temperature");
   h1.innerHTML = temperature;
   let descriptionElement = document.querySelector("p3");
   descriptionElement.innerHTML = response.data.weather[0].description;
@@ -63,7 +63,7 @@ function showTempGeo(response) {
   console.log(response);
   let temperature = Math.round(response.data.main.temp);
   console.log(temperature);
-  let h1 = document.querySelector("h1");
+  let h1 = document.querySelector("#temperature");
   h1.innerHTML = `${temperature}`;
   let geoName = response.data.name;
   let h2 = document.querySelector("h2");
