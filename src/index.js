@@ -41,6 +41,12 @@ function displayTemperature(response) {
   let temperature = Math.round(response.data.main.temp);
   let h1 = document.querySelector("h1");
   h1.innerHTML = temperature;
+  let descriptionElement = document.querySelector("p3");
+  descriptionElement.innerHTML = response.data.weather[0].description;
+  let humidityElement = document.querySelector("#humidity");
+  humidityElement.innerHTML = Math.round(response.data.main.humidity);
+  let windElement = document.querySelector("#wind");
+  windElement.innerHTML = Math.round(response.data.wind.speed);
 }
 
 let form = document.querySelector("form");
@@ -57,4 +63,10 @@ function showTempGeo(response) {
   let geoName = response.data.name;
   let h2 = document.querySelector("h2");
   h2.innerHTML = geoName;
+  let descriptionElement = document.querySelector("p3");
+  descriptionElement.innerHTML = response.data.weather[0].description;
+  let humidityElement = document.querySelector("#humidity");
+  humidityElement.innerHTML = Math.round(response.data.main.humidity);
+  let windElement = document.querySelector("#wind");
+  windElement.innerHTML = Math.round(response.data.wind.speed);
 }
