@@ -2,6 +2,9 @@ body {
   background-color: black;
   color: white;
   font-family: Roboto;
+  position: relative;
+  height: 100%;
+  padding: 30px;
 }
 
 p {
@@ -160,6 +163,7 @@ button {
 footer {
   text-align: center;
   font-family: Roboto;
+  padding: 30px;
 }
 
 p3 {
@@ -168,10 +172,14 @@ p3 {
 
 #currentWeather {
   text-align: center;
+  padding: 5px;
+  margin: 5px;
 }
 
 #futureWeather {
   text-align: center;
+  padding: 5px;
+  margin: 5px;
 }
 
 a {
