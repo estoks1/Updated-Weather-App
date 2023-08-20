@@ -156,3 +156,12 @@ button {
   border: 0;
   background-color: transparent;
 }
+
+footer {
+  text-align: center;
+  font-family: Roboto;
+}
+
+a {
+  color: white;
+}
